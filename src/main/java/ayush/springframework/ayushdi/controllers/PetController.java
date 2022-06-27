@@ -1,6 +1,6 @@
 package ayush.springframework.ayushdi.controllers;
 
-import ayush.springframework.ayushdi.services.PetService;
+import com.springframework.PetService;
 import org.springframework.stereotype.Controller;
 
 @Controller

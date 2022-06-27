@@ -4,8 +4,14 @@ import ayush.springframework.ayushdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+// Spring Does the component scan , whichever classes annotated with spring stereotypes gets picked up.
+//Let's say if we move this class outside this package , it won't work because currently we are working on default
+// component scan of spring
 
+//We are over-riding the default component scan.
+@ComponentScan(basePackages = {"com.springframework","ayush.springframework.ayushdi"})
 @SpringBootApplication
 public class AyushDiApplication {
 
