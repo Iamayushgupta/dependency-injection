@@ -5,12 +5,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-
+//Solving Assignment Question : implementation of new service(Pets)
 @SpringBootApplication
 public class AyushDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx =SpringApplication.run(AyushDiApplication.class, args);
+
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
+
 		MyController myController =(MyController) ctx.getBean("myController");
 		System.out.println("--primary bean -----");
 		System.out.println(myController.getGreeting());
@@ -31,7 +36,6 @@ public class AyushDiApplication {
 		System.out.println("--profiles--");
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayGreeting());
-
 
 	}
 }
