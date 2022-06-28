@@ -3,6 +3,8 @@ package ayush.springframework.ayushdi.config;
 import ayush.springframework.ayushdi.repositories.EnglishGreetingRepository;
 import ayush.springframework.ayushdi.repositories.EnglishGreetingRepositoryImpl;
 import ayush.springframework.ayushdi.services.*;
+import com.springframework.PetService;
+import com.springframework.PetServiceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -12,6 +14,25 @@ import org.springframework.context.annotation.Profile;
 //We can use java configuration
 @Configuration
 public class GreetingServiceConfig{
+
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
+
+
+    @Bean
+    @Profile({"dog", "default"})
+    PetService dogPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("dog");
+    }
+
+    @Bean
+    @Profile("cat")
+    PetService catPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("cat");
+    }
+
     @Profile("ES")
     @Bean("i18nService")  // Specifying the bean name as the qualifier name in I18nController
     I18nSpanishService i18nSpanishService(){

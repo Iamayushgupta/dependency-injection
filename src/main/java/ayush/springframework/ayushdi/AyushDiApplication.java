@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.springframework","ayush.springframework.ayushdi"})
+//Since there are no components (@Service) in com.springframework since it is injected in java config
+//We no longer need component scan
+//@ComponentScan(basePackages = {"com.springframework","ayush.springframework.ayushdi"})
 @SpringBootApplication
 public class AyushDiApplication {
 
