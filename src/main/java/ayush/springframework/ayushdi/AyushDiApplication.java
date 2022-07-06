@@ -1,6 +1,8 @@
 package ayush.springframework.ayushdi;
 
 import ayush.springframework.ayushdi.controllers.*;
+import ayush.springframework.ayushdi.services.ProtoTypeBean;
+import ayush.springframework.ayushdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -39,6 +41,22 @@ public class AyushDiApplication {
 		System.out.println("--profiles--");
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayGreeting());
+
+		//Singleton Bean
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean1.getMyScope());
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getMyScope());
+
+		// Prototype Bean
+		ProtoTypeBean protoTypeBean1 = ctx.getBean(ProtoTypeBean.class);
+		System.out.println(protoTypeBean1.getMyScope());
+		ProtoTypeBean protoTypeBean2 = ctx.getBean(ProtoTypeBean.class);
+		System.out.println(protoTypeBean2.getMyScope());
+
+		// We can in the output that constructor of singleton has only been called
+		// once whereas constructor of prototype bean has been called twice
+		// After initialisation first thing that run is the singleton bean constructor but only once in its lifetime
 
 	}
 }
