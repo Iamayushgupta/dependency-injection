@@ -11,7 +11,10 @@ import org.springframework.context.annotation.*;
 
 //We can remove the Service annotation which is dependent on Spring Stereotype as takes time.
 //We can use java configuration
-@PropertySource("classpath:datasource.properties")
+
+//We can get rid of this annotation by defining our variables in application.propeties itself
+//@PropertySource("classpath:datasource.properties")
+
 @Configuration
 public class GreetingServiceConfig{
     @Bean
