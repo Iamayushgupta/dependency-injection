@@ -1,6 +1,7 @@
 package ayush.springframework.ayushdi;
 
 import ayush.springframework.ayushdi.controllers.*;
+import ayush.springframework.ayushdi.datasource.FakeDataSource;
 import ayush.springframework.ayushdi.services.ProtoTypeBean;
 import ayush.springframework.ayushdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -57,6 +58,11 @@ public class AyushDiApplication {
 		// We can in the output that constructor of singleton has only been called
 		// once whereas constructor of prototype bean has been called twice
 		// After initialisation first thing that run is the singleton bean constructor but only once in its lifetime
+
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getJdbcurl());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getUsername());
 
 	}
 }

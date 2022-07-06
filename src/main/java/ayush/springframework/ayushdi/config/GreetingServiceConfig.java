@@ -1,25 +1,34 @@
 package ayush.springframework.ayushdi.config;
 
+import ayush.springframework.ayushdi.datasource.FakeDataSource;
 import ayush.springframework.ayushdi.repositories.EnglishGreetingRepository;
 import ayush.springframework.ayushdi.repositories.EnglishGreetingRepositoryImpl;
 import ayush.springframework.ayushdi.services.*;
 import com.springframework.PetService;
 import com.springframework.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
 //We can remove the Service annotation which is dependent on Spring Stereotype as takes time.
 //We can use java configuration
+@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingServiceConfig{
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${ayush.password}") String password ,
+                                  @Value("${ayush.username}") String username,
+                                  @Value("${ayush.jdbcurl}") String jdbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setJdbcurl(jdbcurl);
+        fakeDataSource.setPassword(password);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory(){
         return new PetServiceFactory();
     }
-
 
     @Bean
     @Profile({"dog", "default"})
