@@ -1,0 +1,9 @@
+#transferring everything from application.properties to this file
+spring:
+  profiles:
+    active: ES,dog,qa
+
+ayush:
+  username: yamluser
+  password: yamlpass
+  jdbcurl: yamlurl
