@@ -1,4 +1,4 @@
 ayush:
-  username: QAuser
-  password: QApass
-  jdbcurl: QAurl
+  username: Devuser
+  password: Devpass
+  jdbcurl: Devurl

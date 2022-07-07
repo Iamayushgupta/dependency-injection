@@ -1,9 +1,19 @@
 #transferring everything from application.properties to this file
 spring:
   profiles:
-    active: ES,dog,qa
+    active: ES,dog,dev
 
 ayush:
   username: yamluser
   password: yamlpass
   jdbcurl: yamlurl
+
+--- #We can make a new yaml file inside the same file using ---
+spring:
+  profiles: prod
+ayush:
+  username: Produser
+  password: Prodpass
+  jdbcurl: Produrl
+
+
