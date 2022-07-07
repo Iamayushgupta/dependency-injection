@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AyushConfiguration {
     private String username;
+    private String password;
+    private String jdbcurl;
 
     public String getUsername() {
         return username;
@@ -32,6 +34,4 @@ public class AyushConfiguration {
         this.jdbcurl = jdbcurl;
     }
 
-    private String password;
-    private String jdbcurl;
 }

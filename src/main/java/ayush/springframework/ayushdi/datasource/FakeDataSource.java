@@ -2,6 +2,8 @@ package ayush.springframework.ayushdi.datasource;
 
 public class FakeDataSource {
     private String username;
+    private String password;
+    private String jdbcurl;
 
     public String getUsername() {
         return username;
@@ -27,7 +29,6 @@ public class FakeDataSource {
         this.jdbcurl = jdbcurl;
     }
 
-    private String password;
-    private String jdbcurl;
+
 
 }

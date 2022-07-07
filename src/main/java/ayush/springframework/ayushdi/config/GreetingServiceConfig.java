@@ -7,6 +7,7 @@ import ayush.springframework.ayushdi.services.*;
 import com.springframework.PetService;
 import com.springframework.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 //We can remove the Service annotation which is dependent on Spring Stereotype as takes time.
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.*;
 
 //We can get rid of this annotation by defining our variables in application.propeties itself
 //@PropertySource("classpath:datasource.properties")
-
+@EnableConfigurationProperties(AyushConstructorConfig.class) // Declaring so that it becomes spring component
 @Configuration
 public class GreetingServiceConfig{
     @Bean
