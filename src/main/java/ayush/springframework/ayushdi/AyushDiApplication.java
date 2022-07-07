@@ -1,5 +1,6 @@
 package ayush.springframework.ayushdi;
 
+import ayush.springframework.ayushdi.config.AyushConfiguration;
 import ayush.springframework.ayushdi.controllers.*;
 import ayush.springframework.ayushdi.datasource.FakeDataSource;
 import ayush.springframework.ayushdi.services.ProtoTypeBean;
@@ -63,6 +64,12 @@ public class AyushDiApplication {
 		System.out.println(fakeDataSource.getJdbcurl());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getUsername());
+
+		System.out.println("------------Property Binding Beans");
+		AyushConfiguration ayushConfiguration = ctx.getBean(AyushConfiguration.class);
+		System.out.println(ayushConfiguration.getJdbcurl());
+		System.out.println(ayushConfiguration.getPassword());
+		System.out.println(ayushConfiguration.getUsername());
 
 	}
 }

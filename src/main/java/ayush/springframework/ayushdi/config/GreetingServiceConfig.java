@@ -18,13 +18,12 @@ import org.springframework.context.annotation.*;
 @Configuration
 public class GreetingServiceConfig{
     @Bean
-    FakeDataSource fakeDataSource(@Value("${ayush.password}") String password ,
-                                  @Value("${ayush.username}") String username,
-                                  @Value("${ayush.jdbcurl}") String jdbcurl){
+    FakeDataSource fakeDataSource(AyushConfiguration ayushConfiguration){
+        //Doing the dependency injection
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setJdbcurl(jdbcurl);
-        fakeDataSource.setPassword(password);
+        fakeDataSource.setUsername(ayushConfiguration.getUsername());
+        fakeDataSource.setJdbcurl(ayushConfiguration.getJdbcurl());
+        fakeDataSource.setPassword(ayushConfiguration.getPassword());
         return fakeDataSource;
     }
 
